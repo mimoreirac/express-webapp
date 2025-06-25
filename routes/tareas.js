@@ -17,8 +17,8 @@ router.get("/", tareasController.getTareas);
 
 router.post("/", tareasController.addTareas);
 
-router.delete("/", tareasController.deleteTareas);
-router.delete("/:id", tareasController.eliminarTarea);
+router.delete("/:id", tareasController.deleteTareas);
+// router.delete("/:id", tareasController.eliminarTarea);
 router.patch("/:id", tareasController.editarTareas);
 
 module.exports = router;

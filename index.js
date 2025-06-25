@@ -12,11 +12,11 @@ mongoose
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión en la base de datos", err));
 
-let tareasRoutes = require("./routes/tareas");
+const tareasRoutes = require("./routes/tareas");
 
 app.use(express.json());
 app.use("/tareas", tareasRoutes);
 
 app.listen(port, () => {
-  console.log("Servidor corriendo en el puerto 4000");
+  console.log(`Servidor corriendo en el puerto ${port}`);
 });
