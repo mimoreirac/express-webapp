@@ -1,7 +1,8 @@
-import { dotenv } from "config";
-import { express } from "express";
-import { mongoose } from "mongoose";
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
 
+dotenv.config();
 const app = express();
 
 const mongoUri = process.env.MONGODB_URI;
@@ -12,7 +13,7 @@ mongoose
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión en la base de datos", err));
 
-const tareasRoutes = require("./routes/tareas");
+import tareasRoutes from "./routes/tareas.js"
 
 app.use(express.json());
 app.use("/tareas", tareasRoutes);

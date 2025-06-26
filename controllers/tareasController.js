@@ -1,4 +1,4 @@
-import Tarea from "../model/Tarea";
+import Tarea from "../model/Tarea.js";
 
 export async function getTareas(req, res) {
   const tareas = await Tarea.find();
