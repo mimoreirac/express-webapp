@@ -1,21 +1,21 @@
-const Tarea = require("../model/Tarea");
+import Tarea from "../model/Tarea";
 
-exports.getTareas = async (req, res) => {
+export async function getTareas(req, res) {
   const tareas = await Tarea.find();
   console.log(`El numero de tareas es ${tareas.length}`);
   res.json(tareas);
-};
+}
 
-exports.addTareas = async (req, res) => {
+export async function addTareas(req, res) {
   let { nombre, descripcion, completed } = req.body;
   let nuevo = new Tarea({ nombre, descripcion, completed });
   await nuevo.save();
   console.log("Se agregaron nuevas tareas");
   console.log(nombre);
   res.status(201).json(nuevo);
-};
+}
 
-exports.deleteTareas = async (req, res) => {
+export async function deleteTareas(req, res) {
   await Tarea.findByIdAndDelete(req.params.id)
     .then((result) => {
       console.log(`Se elimino la tarea ${result._id}.`);
@@ -24,7 +24,7 @@ exports.deleteTareas = async (req, res) => {
     .catch((err) => {
       console.error(`Error al eliminar la tarea ${err}`);
     });
-};
+}
 
 // exports.deleteTareas = (req, res) => {
 //   let tareaId = req.body.id;
@@ -50,7 +50,7 @@ exports.deleteTareas = async (req, res) => {
 //   res.json({ message: "Tarea eliminada correctamente" });
 // };
 
-exports.editarTareas = (req, res) => {
+export function editarTareas(req, res) {
   let tareaId = Number(req.params.id);
   let tareaIndex = tareas.findIndex((tarea) => tarea.id === tareaId);
   if (tareaIndex === -1) {
@@ -62,4 +62,4 @@ exports.editarTareas = (req, res) => {
   tareas.push(nuevo);
   console.log(nombre);
   res.status(201).json(nuevo);
-};
+}

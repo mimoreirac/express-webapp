@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const tareaSchema = new mongoose.Schema({
   nombre: { type: String, require: true },
@@ -7,4 +7,5 @@ const tareaSchema = new mongoose.Schema({
   fechaCreacion: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Tarea", tareaSchema);
+const Tarea = mongoose.model("Tarea", tareaSchema);
+export default Tarea;

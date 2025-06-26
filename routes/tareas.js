@@ -1,7 +1,7 @@
-let express = require("express");
-let tareasController = require("../controllers/tareasController.js");
+import express from "express";
+import { getTareas, addTareas, deleteTareas, editarTareas } from "../controllers/tareasController.js";
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/matematicas", (req, res) => {
   console.log("RECIBI OTRO REQUEST");
@@ -13,12 +13,12 @@ router.get("/test", (req, res) => {
   res.json(`{"test":"testing"}`);
 });
 
-router.get("/", tareasController.getTareas);
+router.get("/", getTareas);
 
-router.post("/", tareasController.addTareas);
+router.post("/", addTareas);
 
-router.delete("/:id", tareasController.deleteTareas);
+router.delete("/:id", deleteTareas);
 // router.delete("/:id", tareasController.eliminarTarea);
-router.patch("/:id", tareasController.editarTareas);
+router.patch("/:id", editarTareas);
 
-module.exports = router;
+export default router;
